@@ -1,0 +1,167 @@
+{
+  "main": {
+    "id": "23039c0793e3a894",
+    "type": "split",
+    "children": [
+      {
+        "id": "dc25de4186f26bfe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79d5105e5192ba57",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "TDA/Algoritmos de Aproximación I.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "81020a8922c4f48e",
+    "type": "split",
+    "children": [
+      {
+        "id": "1c0f440bc30ec077",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bb2212fa61f82988",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "caf0998526e8910b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4e5fdb072bfcd283",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "1a141c1fa57a261f",
+    "type": "split",
+    "children": [
+      {
+        "id": "092a7f63df5fef3b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "689ca5f2b7948115",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "TDA/Algoritmos de Aproximación I.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6bad982fc38a1879",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "TDA/Algoritmos de Aproximación I.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6eec5316dd5ed0da",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8e33340965e7fa18",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "TDA/Algoritmos de Aproximación I.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "79d5105e5192ba57",
+  "lastOpenFiles": [
+    "Sisop/Clase 1.md",
+    "Sisop",
+    "TDA/Programación lineal II.md",
+    "TDA/Algoritmos de Aproximación I.md",
+    "TDA/Programación lineal I.md",
+    "TDA/Algoritmos de Aproximación I.md~",
+    "Captura de pantalla 2024-08-21 a la(s) 11.57.35.png",
+    "Taller/Clase 1.md",
+    "Taller",
+    "Captura de pantalla 2024-08-19 a la(s) 12.36.02.png",
+    "Captura de pantalla 2024-08-19 a la(s) 13.21.44.png",
+    "TDA/Programación lineal I.md~",
+    "Ing-Software1-Leveroni/Ing-software-1/No Silver Bullet.md",
+    "Ing-Software1-Leveroni/Ing-software-1/Modern Software Engineering.md",
+    "Ing-Software1-Leveroni/Ing-software-1/A simple technique for handling multiple polymorphism.md"
+  ]
+}

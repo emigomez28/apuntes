@@ -1,0 +1,166 @@
+{
+  "main": {
+    "id": "d3839f8bee725651",
+    "type": "split",
+    "children": [
+      {
+        "id": "b51c233bafc51e3f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6fba3fa8d54527d6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Programación lineal I.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "52c08d9d341a1057",
+    "type": "split",
+    "children": [
+      {
+        "id": "c632448ec73d3561",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "984708b1ade88436",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "688dbf9fba9a78c8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5949c77f3a5b8011",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "9304e532ab62421f",
+    "type": "split",
+    "children": [
+      {
+        "id": "9b761135e6e3ee74",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "60f39f3a3e6449fc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Programación lineal I.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e0706c70e77251aa",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Programación lineal I.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "76fe9b522c31ec4b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "71de4a4179fc32db",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Programación lineal I.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "6fba3fa8d54527d6",
+  "lastOpenFiles": [
+    "Ing-software-1/A simple technique for handling multiple polymorphism.md",
+    "Programación lineal I.md",
+    "TDA",
+    "Ing-software-1/Programing as theory building.md",
+    "Ing-software-1",
+    "Ing-software-1/The Visitor Pattern.md",
+    "Ing-software-1/The Object Recursion Pattern.md",
+    "Ing-software-1/The Design of everyday things.md",
+    "Ing-software-1/The Composite Pattern.md",
+    "Ing-software-1/Polymorphic Hierarchy.md",
+    "Ing-software-1/No Silver Bullet.md",
+    "Ing-software-1/Modern Software Engineering.md",
+    "2024-07-10.md",
+    "Welcome.md"
+  ]
+}
