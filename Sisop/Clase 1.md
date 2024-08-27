@@ -1,5 +1,7 @@
 # Interfaces del Sistema operativo
 
+## Libro xv6 (buscar nombre)
+
 > El trabajo de un sistema oprativo es compartir una computadora entre programas y proveer un set de servicios más útil que solo el Hardware que lo soporta.
 
 > Un sistema operativo maneja y abstrae el hardware de bajo nivel (low-level hardware).
@@ -225,3 +227,55 @@ Hay syscalls para crear directorios.
 ```c
     unlink("a");
 ```
+
+# Libro Arpaci (caps 4 y 5)
+
+## La abstracción: El proceso
+
+- La definición de proceso (informalmente) es "el programa que está corriendo".
+
+- Dentro de una computadora se corren muchos procesos a la vez. Para crear esta ilución el SO lo que hace es _virtualizar_ el CPU.
+
+- Lo que hace es correr un proceso para luego frenarlo y correr otro, de esta forma promueve la ilusión de que existen muchas CPUs virtuales, cuando en realidad existe una (o unas pocas) CPUs físicas $\rightarrow$ esto se conoce como _time sharing_
+
+> _Time sharing_ is a basic technique used by an OS to share a resource. By
+> allowing the resource to be used for a little while by one entity, and then
+> a little while by another, and so forth, the resource in question (e.g., the
+> CPU, or a network link) can be shared by many. The counterpart of time
+> sharing is space sharing, where a resource is divided (in space) among
+> those who wish to use it. For example, disk space is naturally a space-
+> shared resource; once a block is assigned to a file, it is normally not as-
+> signed to another file until the user deletes the original file.
+
+- Para poder implementar esto tambien se necesita _context switch_ que hace referencia a que el CPU pueda cambiar de contexto, tambien se necesitan _policies_ que son algoritmos para tomar alguna decisión dentro del SO, por ejemplo, se tienen varios posibles programas a ejecutar en el CPU ¿Cuál debería correr primero? $\rightarrow$ _scheduling policy_
+
+- Para entender lo que constituye un proceso es necesario entender su _estado de maquina_, es decir, lo que un programa puede leer o actualizar cuando esta corriendo.
+
+### Componentes de un proceso
+
+1. Un componente obvio es la _memoria_. Las instrucciones reciden en la memoria, los datos que lee/escribe y la memoria que el prceso puede direccionar (_address space_).
+2. Registros, muchas instrucciones explicitamente leen/actualizan registros. A su vez, algunos registros son siempre parte de los procesos, como por ejemplo el PC, (_program counter_) o IP (_instruction pointer_) que nos dice cual es la siguiente instrucción a ejecutar.
+3. Info I/O, ya que algunas veces los programas interactuan con los dispositivos de I/O.
+
+## Process API
+
+Primera idea de lo que debe estar incluido en cualquier interfaz de un sistema operativo.
+
+- Create: Cualquier SO debe incluir algún método para crear un nuevo proceso, tanto por shell como de modo "visual" (hago doble-click en un ícono).
+- Destroy: Idem arriba pero para terminar (kill) con un proceso.
+- Wait: Hay veces donde es de gran ayuda esperar a que un proceso termine de ejecutar, y para esto tambien una "interfaz de espera".
+- Miscellaneous Control: Además de terminar y esperar, algunso SO suelen proveer otras funcionalidades como por ejemplo suspender un proceso (detener su ejecución por un tiempo)
+- Status: Algunas interfaces proveen el información sobre el status del proceso.
+
+En C, los programas usan el stack para las variables locales, mientras que usan el heap cuando se pide memoria explicitamente, usando _malloc()_ y _free()_
+
+## Estados de un proceso
+
+Se puede separar en 3 estados:
+
+- Running: El proceso esta corriendo en el procesador, es decir, esta ejecutando instrucciones.
+- Ready: El proceso esta listo para correr, pero por algún motivo el SO decidió no ejecutarlo.
+- Blocked: El proceso hizo alguna acción que no lo permite seguir ejecutandose hasta que otro evento suceda.
+
+> Si muevo un proceso de _ready_ a _running_ $\rightarrow$ _scheduled_.h
+> Si muevo un proceso de _running_ a _ready_ $\rightarrow$ _descheduled_.

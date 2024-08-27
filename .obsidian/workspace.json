@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "TDA/Algoritmos de Aproximación I.md",
-                "mode": "source",
+                "file": "Sisop/Practica 1.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "TDA/Algoritmos de Aproximación I.md",
+                "file": "Sisop/Practica 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "TDA/Algoritmos de Aproximación I.md",
+                "file": "Sisop/Practica 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "TDA/Algoritmos de Aproximación I.md"
+                "file": "Sisop/Practica 1.md"
               }
             }
           }
@@ -149,9 +149,10 @@
   "active": "79d5105e5192ba57",
   "lastOpenFiles": [
     "Sisop/Clase 1.md",
+    "Sisop/Practica 1.md",
+    "TDA/Algoritmos de Aproximación I.md",
     "Sisop",
     "TDA/Programación lineal II.md",
-    "TDA/Algoritmos de Aproximación I.md",
     "TDA/Programación lineal I.md",
     "TDA/Algoritmos de Aproximación I.md~",
     "Captura de pantalla 2024-08-21 a la(s) 11.57.35.png",
