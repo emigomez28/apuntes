@@ -178,3 +178,196 @@ a = Person {
     birth: 1991,
 }; // Se destriye el valor de Alice.
 ```
+
+```rust
+let x = vec![1, 2, 3];
+let y = x; // Se mueve el ownership de x a y.
+let z = x; // Error, x ya no es dueño de la memoria.
+```
+
+### Movimientos y control de flujo.
+
+- Si es posible que a una variable se le haya movido el valor, y no ha sido asignado un valor nuevo de manera definitoria, se considera _no inicializada_. Si una variable aún tiene un valor despues de evaluar la expresión de la condición de un if, entonces podemos usarlo en ambas ramas.
+
+```rust
+let x = vec![1, 2, 3];
+if c {
+    f(x); // Esta OK mover el ownership de x a f
+} else {
+    g(x); // Y aca tambien.
+}
+h(x) // Acá no, x ya queda sin inicializar si cualquier rama la usa.
+```
+
+- Mover una variable en un bucle esta _prohibido_.
+
+```rust
+let v = vec![1, 2, 3];
+while cond {
+    f(v); // Error, v se mueve en la primera iteración.
+}         // Para la segunda se considera no inicializada.
+```
+
+> Es común intentar vencer al borrow-checker $\rightarrow$ clonando lo que se necesita, el problema obvio con esto es el consumo de memoria.
+
+### Usos corectos de movimientos.
+
+1. Saco el último elemento de un vector
+
+```rust
+let v = vec![1, 2, 3];
+let n = v.pop().unwrap(); // Se mueve el ownership de v a n.
+```
+
+2. Mover el valor del medio de un vector, y reemplazarlo por otro.
+
+```rust
+let mut v = vec![1, 2, 3];
+let n = v.swap_remove(1); // Se mueve el ownership de v[1] a n.
+```
+
+3. Intercambiar otro valor por el que estamos moviendo.
+
+```rust
+let mut v = vec![1, 2, 3];
+let n = std::mem::replace(&mut v[1], 4); // Se mueve el ownership de v[1] a n.
+```
+
+4. Otro ejemplo con vectores, suelen ofrecer metodos para poder usar sus elementos en un bucle.
+
+```rust
+let v = vec![1, 2, 3];
+
+for mut s in v { // Esto mueve el vector v,
+    s.push("!"); // dejando a v en no inicializado
+    println!("{}", s);
+}
+```
+
+## Tipos que se copian.
+
+Suelen ser tipos que no suelen ser muy grandes (enteros, floats, bools, etc). Copiarlos no repercute en el programa.
+
+- Asignar un valor de un tipo que es _Copy_ el valor pero no lo mueve.
+- El origen de la asignación permanece inicalizado y usable, con el mismo valor que antes.
+- Pasar tipos _Copy_ a funciones y constructores opera de forma similar.
+- Cada movimiento es una copia no profunda (shallow copy) byte a byte. Las copias son similares, solo que dejan al origen inicializado.
+- Una tupla o arreglo de tamaño fijo cuyos componentes son _Copy_, estos tambien lo son.
+- Se puede derivar el tipo _Clone_ y _Copy_ haciendo \#[derive(Clone, Copy)].
+
+## Referencias y Borrowing.
+
+- Las referencias en Rust son otro tipo de puntero que no se adueñan del valor al que apunta, sino que lo toma prestado ("borrow").
+- Las referencias no tienen efecto sobre los lifetimes de sus referentes y no deben sobrevivir a sus referentes.
+- Tomar prestado (borrowing) == crear una referencia a un valor.
+- No son más que direcciones de memoria. Permiten acceder a un valor sin afectar el ownership.
+
+### Tipos de referencias.
+
+#### Referencia compartida.
+
+- Permite leer pero no modificar. Pueden existir tantas a la vez como se desee.
+
+#### Referencia mutable.
+
+- Permite leer y modificar. Solo puede existir una a la vez.
+
+> No existen referencias nulas en Rust. Para indicar la ausencia de valor se usa Option<T>.
+
+### Seguridad de referencias.
+
+- Rust a cada referencia le asigna un _lifetime_, es decir, el scope.
+- No se declaran, el compilador los infiere.
+
+```rust
+{
+    let r; // r no es inicializado.
+    {
+        let x = 42;
+        r = &x; // r es inicializado.
+    } // x sale de scope, r no es válido.
+}
+```
+
+### Recibiendo referencias por parametro.
+
+Teniendo el siguiente código:
+
+```rust
+// Esto no compila.
+static mut STASH: &i32; // No esta inicializada, no existe "NULL".
+                        // Si es global se puede acceder desde cualquier lado -> inseguro..
+                        // Solo se puede mutar si se usa el keyword unsafe
+fn f(p: &i32) { STASH = p; }
+```
+
+Ahora, si se tiene:
+
+```rust
+static mut STASH: &i32 = &128 // "static" es el lifetime mas grande -> todo el programa
+fn f(p: &i32) {
+    unsafe {
+        STASH = p; // El lifetime es distinto, nada asegura que p siga vivo.
+    }
+}
+```
+
+Para que esto si funcione, debe hacerse así:
+
+```rust
+static mut STASH: &i32 = &128;
+
+fn f(p: &'static i32) { // De esta forma el compilador se asegura de que
+    unsafe {            // los lifetimes sean iguales.
+        STASH = p;
+    }
+}
+```
+
+### Structs con parametros de lifetime
+
+> Si un struct contiene un campo que es una referencia, se deben nombrar los lifetimes de esas referencias.
+
+```rust
+struct Foo<'a> {
+    x: &'a i32,
+}
+```
+
+## Genericidad y Traits
+
+- Soporte de polimorfismo $\rightarrow$ Generis y Traits.
+- Un _Generic_ es un tipo que puede ser parametrizado por otros tipos.
+- Un _Trait_ es la versión de Rust de una _interfaz_. Define un conjunto de métodos que pueden ser implementados para un tipo dado.
+
+### Implementar un Trait.
+
+```rust
+trait Shape {
+    fn area(&self) -> f64;
+}
+
+struct Circle {
+    radius: f64,
+}
+
+impl Shape for Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * self.radius * self.radius
+    }
+}
+```
+
+### Generics.
+
+```rust
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+fn main() {
+    let p = Point { x: 1, y: 2 };
+    let q = Point { x: 1.0, y: 2.0 };
+}
+```
