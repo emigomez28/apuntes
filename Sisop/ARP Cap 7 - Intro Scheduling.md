@@ -17,5 +17,5 @@
 
 ## Métricas de Scheduling
 
-> $T_{\text{turn_around}} = T_{\text{completion}} - T_{\text{arrival}}$
+> $T_{\text{turnAround}} = T_{\text{completion}} - T_{\text{arrival}}$
 
