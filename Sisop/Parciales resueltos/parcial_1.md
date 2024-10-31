@@ -43,7 +43,7 @@ Para poder realizar esta abstracción el SO debe proveer:
 
 - Si bien este mecanismo resuelve los problemas anteriores de fragmentación de la memoria, por otro lado trae un nuevo problema. Al tener que guardar la Page Table, esta constará de un arreglo de $2^{20}$ entradas por proceso, lo cual es muy costoso.
 
-> ![NOTE]
+> [!NOTE]
 > La MMU es un componente del procesador que se encarga de traducir las direcciones virtuales a direcciones físicas.
 
 ## Explicar el mecanismo de address translation **memoria virtual paginada** de tres niveles de indirección de 32 bits. Indique la cantidad de direcciones de memoria que provee la virtual address de la imágen con tablas de registros de 4 bytes.
