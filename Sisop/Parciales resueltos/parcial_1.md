@@ -7,11 +7,11 @@ Para esto, el SO cumple un rol de `ilusionista` en el cual *hace creer* a los pr
 
 Para poder realizar esta abstracción el SO debe proveer:
 
-1. Transparencia: Los procesos no deben notar que es lo que está ocurriendo y no deben cambiar nada de su implementación debido a esto.
+1. **Transparencia:** Los procesos no deben notar que es lo que está ocurriendo y no deben cambiar nada de su implementación debido a esto.
 
-2. Eficiencia: El SO debe ser capaz de realizar esta abstracción de forma eficiente, es decir, que no debe ser costoso en términos de tiempo y recursos.
+2. **Eficiencia:** El SO debe ser capaz de realizar esta abstracción de forma eficiente, es decir, que no debe ser costoso en términos de tiempo y recursos.
 
-3. Protección: El SO debe ser capaz de proteger a los procesos de otros procesos y del mismo SO. Es decir, que un proceso no pueda acceder a la memoria de otro proceso.
+3. **Protección:** El SO debe ser capaz de proteger a los procesos de otros procesos y del mismo SO. Es decir, que un proceso no pueda acceder a la memoria de otro proceso.
 
 ## ¿Que mecanismos conoce, describa los 3 que le parezcan mas relevantes?
 
