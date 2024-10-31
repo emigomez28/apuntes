@@ -57,3 +57,45 @@ Los primeros 20 bits indican las tablas mientras que los últimos 12 el desplaza
 
 - La cantidad de direcciones de memoria que provee es de $2^{32}$ ya que en el primer y segundo nivel se tendrán $2^{7}$ entradas, y en el tercero $2^{6}$
 
+# Scheduling
+
+## ¿Que es un **context switch**? En un context switch cuales de las siguientes cosas deben/no deben ser guardadas y y porqué: 
+
+1. Registros de proposito general
+2. Translation lookaside buffer (TLB)
+3. Program counter
+4. Page Directory Entry (PDE)
+5. Process Control Block Entry (PCB)
+
+- Un **context switch** es el mecanismo que realiza un SO cuando decide dejar de correr un proceso para correr otro. Para ello, el SO debe guardar el estado del proceso actual y cargar el estado del proceso siguiente. Dentro de la lista mencionada, se deben guardar:
+
+1. Registros de proposito general ya que son los registros que estaba utilizando el proceso antes de realizar el cambio de contexto, por lo que para volver al estado anterior necesariemente necesita guardarlos y recuperarlos.
+
+2. No es necesario ya que es interno del MMU, por lo que no es necesario guardarlo en un context switch.
+
+3. El program counter es neceesario guardarlo ya que indica la proxima instrucción a ejecutar, por lo que, de no guardarlo, la ejecución que estaba llevando a cabo el proceso se rompería.
+
+4. El PDE es necesario guardarlo ya que cada proceso tiene su propio address space y la información traducida se encuentra ahí.
+
+5. Guardar el PCB es necesario, ya que de no hacerlo se perdería toda la información anterior.
+
+> [!NOTE]
+> Un **context switch** tambien se da dentro del pasaje de `modo usuario` a `modo kernel` (y viceversa) dentro de un SO. Este se da cuando desde el espacio de usuario se necesita acceder a kernel land (por ejemplo para ejecutar una **syscall**), para ello, se cede el control al kernel y luego se vuelve al espacio de usuario recuperando toda la información antes del cambio.
+
+## Explique la política de scheduling **MLFQ** detalladamente. Sea 1 proceso, cuyo tiempo de ejecución total es de 40 ms, el time slice por cola es de 2ms/c pero el mismo se incremente en 5ms por cola. Cuantas veces se interrumpe y en que cola termina su ejecución.
+
+- La política de scheduling **Multi-Level Feedback Queue** consiste en tener distintos niveles de colas de prioridad (usualmente 8) para poder dar un orden a los jobs. La política de scheduling cumple los siguientes requerimientos:
+
+1. Si Prioridad(A) > Priordad(B) entonces A se ejecuta antes que B.
+2. Si Prioridad(A) == Prioridad(B) entonces A y B se ejecutan por Round Robin.
+3. Todos los procesos empiezan en la cola de prioridad mas alta.
+4. Si un proceso se ejecuta por un tiempo mayor al time slice, entonces su prioridad disminuye.
+5. Cada cierto tiempo se incrementa la prioridad de todos los procesos, yendo estos a la primer cola de prioridad (la de mayor prioridad).
+
+- Esta política de scheduling busca minimizar tanto $T_{\text{turnAround}}$ como $T_{\text{response}}$ haciendo que el SO se sienta interactivo mientras que se mantiene el intervalo de tiempo en el que un proceso es cargado hasta que este finaliza su ejecución. 
+
+- Esto lo logra dandole mas prioridad a aquellos jobs que son interactivos y terminan antes (muy similar a la política **Shortest Job to Finish**) mientras que disminuye la prioridad de aquellos que requieren mas tiempo de CPU (CPU intensive) y aumentando la prioridad de todos cada cierto tiempo para evitar **starvation** (la prioridad de un proceso es tan baja que no llega a ejecutarse nunca, los procesos mas interactivos monopolizan el CPU) 
+
+![Gráfico de MLFQ](img/ejercicio_mlfq_p1.png)
+
+- Como se puede ver en el gráfico, el proceso se interrumpe 4 veces y termina de ejecutarse en la cola de prioridad 5.
