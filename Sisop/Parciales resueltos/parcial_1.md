@@ -99,3 +99,75 @@ Los primeros 20 bits indican las tablas mientras que los últimos 12 el desplaza
 ![Gráfico de MLFQ](img/ejercicio_mlfq_p1.png)
 
 - Como se puede ver en el gráfico, el proceso se interrumpe 4 veces y termina de ejecutarse en la cola de prioridad 5.
+
+# Procesos
+
+## ¿Que es el **stack**? Explique el mecanismo de funcionamiento del stack para x86 de la función detallada abajo. Como se pasan los parámetros a la función, dirección de retorno, etc. 
+
+```c
+int read(void *buff, size_t len, size_t num, int fd);
+```
+
+- El **stack** es una región del espacio de dierecciones el cual cumple el rol de una pila. Utilizando las intrucciones (en x86) `pop` y `push` se pueden interactuar con la misma, sacando y agregando elementos a la misma respectivamente.
+
+- Para esto existe un registro llamado `stack pointer` que indica la dirección de memoria en la que se encuentra el tope de la pila, por lo que al apilar se incrementa el valor de este registro en 4 y se decrementa con el mimso valor al desapilar.
+
+- Para pasar los parámetros en la función se siguen las `calling conventions` de la arquitectura x86. Para este caso es:
+
+1. Se pushean al stack los registros `caller saved` (eax, ebx, ecx, edx), los registros de uso general de la arquitectura.
+
+2. Se pushean los parámetros en orden inverso (fd $\rightarrow$ num $\rightarrow$ len $\rightarrow$ buff).
+
+3. Se ejecuta la instrucción `call` que pushea la dirección de retorno y realiza un `jmp` a la función para ejecutarla.
+
+- Luego de esto, la función `read` debe asegurarse de mantener el estado del stack antes de retornar, para ello debe:
+
+1. Guardar los registros `callee- saved` y restaurarlos antes de la intrsutrcción `ret`.
+
+2. Manipular la pila con push y pop para poder acceder a los parámetros y dejar la pila en el estado anterior.
+
+- Luego, al ejecutar la instrucción `ret` se hace un `pop` de la dirección de retorno y se vuelve a la rutina llamadora con el stack en el estado antes de llamar.
+
+## ¿Que es el **Address Space**? ¿Que partes tiene? ¿Para que sirve? Describa el/los mecanismos para crear procesos en unix, sus syscalls, ejemplifique.
+
+
+- El **Address space** es una abstracción que provee el SO el cual hace referencia a, como su nombre indica, el espacio de direcciones de memoria. Esta abstracción sirve para *hacer creer* a los procesos que tienen disponible toda la memoria física, cuando no es así.
+
+- El address space se compone de 4 partes:
+
+1. **text**: Región donde se encuentra el código.
+2. **data**: Constantes globales.
+3. **heap**: Memoria dinámica que el proceso le pide al SO.
+4. **stack:** Región de memoria que se comporta como una pila.
+
+- El address space sirve para poder aislar a los procesos y proteger la memoria.
+
+- Para poder crear un procceso en sistemas Unix el SO se encarga de fabricar el espacio de direcciones con las 4 regiones mencionadas copiando y mapeando el código y las constantes a las secciones text y data resepectivamente, y reservando memoria tanto para el heap y el stack.
+
+- Las syscalls involucradas para crear un proceso son `fork()` y `exec()`.
+
+- Mientras que la primera se encarga de copiar un proceso (datos, heap, stack y file descriptors) y crear uno nuevo a partir de lo copiado. Se los suee diferenciar entre proceso padre e hijo. 
+
+- Devuelve un process id (PID), en caso de ser el hijo retorna 0 y si es el padre retorna el PID del proceso nuevo, la segunda se encarga de cargar un nuevo programa en memoria y ejecutarlo.
+
+```c
+pid = fork();
+if (pid == 0) {
+  printf("Soy el proceso hijo");
+} else {
+  printf("Soy el proceso padre");
+}
+```
+
+- Por otro lado, la syscall `exec` se encarga de reemplazar el programa que se está ejecutando en el proceso actual por otro, para esto se setea un nuevo heap, un nuevo stack y se reemplaza el código en text por el nuevo programa. Por como es la syscall, la llamada no debería devolver nunca.
+
+```c
+int pid = fork();
+if (pid == 0) {
+  printf("Soy el proceso hijo");
+  exec("bin/ls"); // Reemplaza el programa actual por ls
+  printf("Esto no se ejecuta nunca, exec no debería retornar");
+} else {
+  printf("Soy el padre");
+}
+```
