@@ -171,3 +171,145 @@ if (pid == 0) {
   printf("Soy el padre");
 }
 ```
+
+# Concurrencia
+
+## Describa que es un thread y use su API para crear un programa que use 5 threads para incrementar una variable compartida por todos en 7 unidades por thread hasta llegar a 1000.
+
+- Un `thread` es una abstracción que provee el SO para un único proceso en ejecución. Se puede pensar a un thread como un proceso, con la salvedad de que los threads comparten el address space, y por consecuencia, pueden acceder a los mismos datos y modificarlos. Son útiles para ejecutar varias secciones de código de forma concurrente y atómica.
+
+```c
+int compartida = 0;
+pthread_mutex_t lock;
+
+void incrementar() {
+  pthread_mutex_lock(&lock);
+
+  if (*compartida + 7 <= 1000) {
+    *compartida += 7;
+  }
+
+  pthread_mutex_unlock(&lock);
+}
+
+int main() {
+  pthread_t t1, t2, t3, t4, t5;
+
+  pthread_create(&t1, NULL, incrementar, &compartida);
+  pthread_create(&t2, NULL, incrementar, &compartida);
+  pthread_create(&t3, NULL, incrementar, &compartida);
+  pthread_create(&t4, NULL, incrementar, &compartida);
+  pthread_create(&t5, NULL, incrementar, &compartida);
+
+  pthread_join(t1, NULL);
+  pthread_join(t2, NULL);
+  pthread_join(t3, NULL);
+  pthread_join(t4, NULL);
+  pthread_join(t5, NULL);
+}
+```
+
+## Defina y de ejemplos de race condition, heisenbug, deadlock e interleave.
+
+- **Race condition:** Ocurre cuando dos o más threads intentan modificar una variable compartida sin sincronización. Por ejemplo, si dos threads intentan incrementar una variable compartida sin sincronización, el resultado final puede ser distinto al esperado. En otras palabras, el resultado depende de cuando se `schedulean` los procesos y no de la lógica del programa. Por ejemplo:
+
+```c
+int compartida = 0;
+pthread_mutex_t lock;
+
+void incrementar() {
+  if (*compartida + 7 <= 10000000000) {
+    *compartida += 7;
+  }
+}
+
+int main() {
+  pthread_t t1, t2
+
+  pthread_create(&t1, NULL, incrementar, &compartida);
+  pthread_create(&t2, NULL, incrementar, &compartida);
+
+  pthread_join(t1, NULL);
+  pthread_join(t2, NULL);
+}
+```
+> [!NOTE]
+> Como los threads no se sincronizan, el valor puede ser distinto al esperado.
+
+- **Heisenbug:** Ocurre cuando un bug desaparece al intentar debuggearlo. Esto puede ocurrir por que los threads no corren de forma determinística, por lo que el orden de ejecución de los mismos podría generar un bug que es dificil de recrear.
+
+- **Deadlock:** Ocurre cuando se utilizan locks para sincronizar los procesos, pero ocurre que todos quedan bloqueados, entonces todos los procesos estan esperando a que otro termine, por lo que no termina nunca.
+
+```c
+int compartida = 0;
+pthread_mutex_t lock_1;
+pthread_mutex_t lock_2;
+
+void incrementar() {
+  pthread_mutex_lock(&lock_1);
+
+  sleep(1);
+
+  pthread_mutex_lock(&lock_2);
+  if (*compartida + 7 <= 10000000000) {
+    *compartida += 7;
+  }
+
+  pthread_mutex_unlock(&lock_2);
+  pthread_mutex_unlock(&lock_1);
+}
+
+void incrementar_2() {
+  pthread_mutex_lock(&lock_2);
+
+  sleep(1);
+
+  pthread_mutex_lock(&lock_1);
+  if (*compartida + 7 <= 10000000000) {
+    *compartida += 7;
+  }
+
+  pthread_mutex_unlock(&lock_1);
+  pthread_mutex_unlock(&lock_2);
+}
+
+int main() {
+  pthread_t t1, t2
+
+  pthread_create(&t1, NULL, incrementar, &compartida);
+  pthread_create(&t2, NULL, incrementar_2, &compartida);
+
+  pthread_join(t1, NULL);
+  pthread_join(t2, NULL);
+}
+```
+> [!NOTE]
+> En este caso se puede ver el deadlock ya que **incrementar_2** e **incrementar** bloquean los mutex en distinto orden, por lo que se quedan esperando a que el otro libere el mutex.
+
+- **Interleave:** Se refiere a la mezcla de las operaciones realizadas por multiples threads en un sistema. Dado a que varios threads pueden estar ejecutandose de forma concurrente, las operaciones entre estos pueden mezclarse en diferentes ordenes cada vez que se ejecuta el programa.
+
+```c
+int contador = 0; 
+
+void* incrementar(void* arg) {
+    for (int i = 0; i < 1000000; i++) {
+        contador++; 
+    }
+    return NULL;
+}
+
+int main() {
+    pthread_t thread1, thread2;
+
+    pthread_create(&thread1, NULL, incrementar, NULL);
+    pthread_create(&thread2, NULL, incrementar, NULL);
+
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+
+    printf("Valor final de contador: %d\n", contador);
+    return 0;
+}
+```
+> [!NOTE]
+> En este caso como no se controla la concurrencia, el valor final de contador puede ser distinto al esperado ya que los threads pueden intercalar sus operaciones.
