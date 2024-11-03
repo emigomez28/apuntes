@@ -109,3 +109,59 @@ Donde sus campos son:
 
 > [!NOTE]
 > Haciendo el pasaje, $2^{38}$ kilobytes es lo mismo que 256 terabytes.
+
+## Explicar cual es la idea central de MLFQ y porque es mejor que otras políticas de scheduling. Justificar.
+
+- Las MLFQ son una política de scheduling que intenta mejorar la performance de los procesos asignando prioridades a los mismos y asignandoles un time slice de tiempo de ejecución. Si un proceso no termina en el time slice asignado, se baja de prioridad.
+
+- Es mejor que otros algoritmos de scheduling ya que permite reducir el tiempo de starvation (un proceso tiene muy poca prioridad y no se ejecuta nunca) y permite tener un sistema operativo que se siente interactivo (ya que los procesos mas interactivos tienden a tener mayor prioridad y terminar su ejecución antes).
+
+# Proceso y Kernel
+
+## Escribir un programa en C que permita a 2 procesos al ping pong, la pelota es un entero, que cada vez que un proceso recibe la pelota debe incrementar en 1 su valor. Se corta por overflow o cambio de signo.
+
+```c
+#define READ 0;
+#define WRITE 1;
+#define MAX 1000;
+
+int main(void) {
+  int pelota = 0;
+
+  int padre_a_hijo[2], hijo_a_padre[2];
+  pipe(padre_a_hijo);
+  pipe(hijo_a_padre);
+
+  pid_t pid = fork();
+
+  if (pid > 0) {
+    close(padre_a_hijo[READ]);
+    close(hijo_a_padre[WRITE]);
+    if (pelota + 1 > 0 && pelota + 1 < INT_MAX) {
+      pelota++;
+      write(padre_a_hijo[WRITE], &pelota, sizeof(pelota));
+      read(hijo_a_padre[READ], &pelota, sizeof(pelota));
+    }
+    close(padre_a_hijo[WRITE]);
+    close(hijo_a_padre[READ]);
+  } else {
+    close(padre_a_hijo[WRITE]);
+    close(hijo_a_padre[READ]);
+    if (pelota + 1 > 0 && pelota + 1 < INT_MAX) {
+      read(padre_a_hijo[READ], &pelota, sizeof(pelota));
+      pelota++;
+      write(hijo_a_padre[WRITE], &pelota, sizeof(pelota));
+    }
+    close(padre_a_hijo[READ]);
+    close(hijo_a_padre[WRITE]);
+      
+  }
+  return pelota;
+}
+```
+## ¿Cuales son los requerimientos mínimos de hardware para poder construir un kernel?
+
+> [!WARNING]
+> No se si esta bien la respuesta.
+
+- Para poder construir un kernel se necesita un procesador con los registros necesarios para poder virtualizar tanto la CPU y la memoria. Es decir, el procesador debe proveer registros propios para poder realizar el cambio de contexto y poder realizar la virtualización de los componentes de hardware.
