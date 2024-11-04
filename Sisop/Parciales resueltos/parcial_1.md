@@ -184,11 +184,11 @@ pthread_mutex_t lock;
 
 void incrementar() {
   pthread_mutex_lock(&lock);
-
-  if (*compartida + 7 <= 1000) {
-    *compartida += 7;
+  while (1) {
+    if (*compartida + 7 <= 1000) {
+      *compartida += 7;
+    }
   }
-
   pthread_mutex_unlock(&lock);
 }
 
