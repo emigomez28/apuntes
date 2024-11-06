@@ -62,5 +62,5 @@ Entonces:
 ## Dado un espacio de direcciones virtuales con direcciones de 8 bits y páginas de 16 bytes, asume un array de 12 enteros (cada uno de 4 bytes) comenzando en la dirección virtual 100. Calcula el patrón de aciertos y fallos en la TLB cuando se accede a todos los elementos del array en un bucle. Asume que inicialmente, la TLB está vacı́a.
 
 - El tamaño del array es de $12 \times 4 \text{bytes} = 48 \text{bytes}$.
-- El tamaño de la página es de $16 \text{bytes}$, entonces el arreglo se divide en $\frac{48 \text{bytes}}{16 \text{bytes} = 3$.
+- El tamaño de la página es de $16 \text{bytes}$, entonces el arreglo se divide en $\frac{48 \text{bytes}}{16 \text{bytes}} = 3$.
 - Como el TLB esta vacío, las 3 páginas deberan ser subidas a memoria eventualmente, por lo que la cantidad de fallos sera 3 y la cantidad de aciertos será $12 - 3 = 9$.
