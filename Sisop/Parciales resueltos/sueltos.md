@@ -33,7 +33,7 @@ Entonces:
 > [!WARNING]
 > Hacer.
 
-## Traducir las direcciones virtuales a físicas: [0000000], [2000220002], [10222002], [00015555] suponiendo lo siguiente:
+## Traducir las direcciones virtuales a físicas: [00000000], [2000220002], [10222002], [00015555] suponiendo lo siguiente:
 
 - 4 bit para el segment number.
 - 12 bit para el page number.
@@ -41,8 +41,18 @@ Entonces:
 
 ![Tabla de traducciones](img/tabla_traducciones_sueltos.png)
 
-> [!WARNING]
-> Hacer.
+Las direcciones de memoria estan en hexadecimal, por lo que:
+- El primer dígito representa el Segment table.
+- Los siguientes 3 dígitos representan el Page table.
+- El resto de los dígitos representan el offset.
+
+Entonces:
+
+- 00000000 $\rightarrow$ Mapea a la Página B, donde el page table es F00, entonces la dirección física es F00 + 0000 = F0000000.
+- 20022002 $\rightarrow$ Como el primer dígito no mapea a ninguna página del segment table, la dirección es invalida.
+- 10022002 $\rightarrow$ Mapea a la Página A, donde el page table es BEEF, entonces la dirección física es BEEF + 2202 = BEEF2202.
+- 00015555 $\rightarrow$ Mapea a la Página B, donde el page table es D8BF, entonces la dirección física es D8BF + 5555 = D8BF5555.
+
 
 ## Considere un sistema x86 de memoria virtual paginada de dos niveles con un espacio de direcciones de 32 bits, donde cada pagina tiene un tamaño de 4096 bytes. Un entero ocupa 4 bytes y se tiene un array de 50,000 enteros que comienza en la dirección virtual 0x01FBD000. Si el arreglo se recorre completamente accediendo a cada elemento una vez ¿A cuantas páginas distintas necesita acceder el sistema operativo para conseguir esto?
 
@@ -51,5 +61,6 @@ Entonces:
 
 ## Dado un espacio de direcciones virtuales con direcciones de 8 bits y páginas de 16 bytes, asume un array de 12 enteros (cada uno de 4 bytes) comenzando en la dirección virtual 100. Calcula el patrón de aciertos y fallos en la TLB cuando se accede a todos los elementos del array en un bucle. Asume que inicialmente, la TLB está vacı́a.
 
-> [!WARNING]
-> Preguntar.
+- El tamaño del array es de $12 \times 4 \text{bytes} = 48 \text{bytes}$.
+- El tamaño de la página es de $16 \text{bytes}$, entonces el arreglo se divide en $\frac{48 \text{bytes}}{16 \text{bytes} = 3$.
+- Como el TLB esta vacío, las 3 páginas deberan ser subidas a memoria eventualmente, por lo que la cantidad de fallos sera 3 y la cantidad de aciertos será $12 - 3 = 9$.
