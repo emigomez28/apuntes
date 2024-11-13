@@ -8,7 +8,7 @@ En la imágen se puede ver como en un principio, el SO y los programas que se ej
 
 - La idea de **time sharing** se vuelve más popular, lo que a su vez trajo nuevos problemas. Se necesitaba una forma de **proteger** los programas de los otros programas y del SO.
 
-![Procesos compartiendo memoria]("img/procesos_compartiendo_memoria_arp_13.png)
+![Procesos compartiendo memoria](img/procesos_compartiendo_memoria_arp_13.png)
 
 
 ## Address Space
@@ -17,7 +17,7 @@ En la imágen se puede ver como en un principio, el SO y los programas que se ej
 
 - El address space de un proceso contiene todo el estado de memoria del programa corriendo. Esto puede ser el **código, los datos, el stack, el heap**, etc.
 
-![Ejemplo del Address Space de un Proceso]("img/address_space_proceso_arp_13.png)
+![Ejemplo del Address Space de un Proceso](img/address_space_proceso_arp_13.png)
 - Dentro del address space se enceuntran las **direcciones virtuales**, las cuales junto con soporte del **hardware** el SO puede traducir a direcciones físicas.
 
 ### Objetivos
