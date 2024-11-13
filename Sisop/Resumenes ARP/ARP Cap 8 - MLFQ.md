@@ -12,7 +12,7 @@
 
 Lo que hace MLFQ es *aprender* de los procesos que ya corrieron para predecir el futuro. Esto lo logra manejando las prioridades según sus operaciones. Por ejemplo, si un proceso es CPU intensive, mantendrá su prioridad baja, por otro lado, si un proceso realiza mucho I/O, su prioridad subirá o se mantendrá alta, para que el OS se sienta interactivo.
 
-![Ejemplo de MLFQ]("img/mlfq_arp_cap_8.png")
+![Ejemplo de MLFQ](img/mlfq_arp_cap_8.png)
 
 ## Criterios de manejo de prioridad
 
