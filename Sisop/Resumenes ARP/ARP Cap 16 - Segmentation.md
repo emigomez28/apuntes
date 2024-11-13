@@ -30,13 +30,13 @@ En este caso el hardware determina que segmento es fue formada la dirección de 
 
 - Si el address esta basado en el stack pointer $\rightarrow$ el address esta en el stack segment.
 
-- En cualquier otro caso $\rightarrrow$ el address esta en el heap segment.
+- En cualquier otro caso $\rightarrow$ el address esta en el heap segment.
 
 ## Stack
 
 > El stack **crece hacia atras**, es decir, si empeiza en 28KB, crecerá hasta 26KB, y así sucesivamente. Esto significa que la traducción de direcciones debe ser realizada de forma distinta.
 
-- Para esto se necesita ayuda del hardware, se agrega un bit de dirección de crecimiento $\rightarrrow$ Si crece hacia los positivos el bit estará prendido (en 1), de lo contrario estará apagado (en 0).
+- Para esto se necesita ayuda del hardware, se agrega un bit de dirección de crecimiento $\rightarrow$ Si crece hacia los positivos el bit estará prendido (en 1), de lo contrario estará apagado (en 0).
 
 ![Segmentos con "Growth Support"](img/segementos_1_arp_16.png)
 
