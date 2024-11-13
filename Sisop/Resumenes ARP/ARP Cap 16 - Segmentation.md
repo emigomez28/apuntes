@@ -3,9 +3,9 @@
 > Si bien el approach de **base and bounds** es útil, se puede ver como entre medio de los address spaces hay una gran parte de memoria libre. Si bien esta memoria no está siendo usada por el proceso en sí, esta ocupando **memoria física** cuando se podría realocar todo el address space de un proceso a un lugar contiguo en memoria física.
 
 
-![Ejemplo de fragmentación]("img/fragmentacion_arp_16.png")
+![Ejemplo de fragmentación](img/fragmentacion_arp_16.png)
 
-- En la imágen se puede ver como tenemos 3 segmentos lógicos $\rightarrrow$ Stack, Heap y el código.
+- En la imágen se puede ver como tenemos 3 segmentos lógicos $\rightarrow$ Stack, Heap y el código.
 
 - Teniendo eso en cuenta, lo que la **segmentación** permite es alocar estos segmentos en distintos lugares de la memoria física, utilizando 3 pares de registros para hacer **base and bounds**.
 
@@ -18,7 +18,7 @@
 
 - Para calcular el offset se pueden utilizar 2 bits para el segmento (0 y 1) los cuales indican a que segmento se esta referenciando y luego los siguientes 12 bits el offset a calcular.
 
-![Ejemplo de cálculo de offset]("img/calculo_offset_arp_16.png")
+![Ejemplo de cálculo de offset](img/calculo_offset_arp_16.png)
 
 En este caso los primeros 2 bits le dicen al hardware que segmento se esta referenciando y luego los siguientes 12 bits son el offset (en este caso 0000 0110 1000).
 
@@ -26,9 +26,9 @@ En este caso los primeros 2 bits le dicen al hardware que segmento se esta refer
 
 En este caso el hardware determina que segmento es fue formada la dirección de memoria. Ejemplos:
 
-- Si el address fue generado por el program counter (por ejemplo fue un fetch) $\rightarrrow$ el address esta en el code segment.
+- Si el address fue generado por el program counter (por ejemplo fue un fetch) $\rightarrow$ el address esta en el code segment.
 
-- Si el address esta basado en el stack pointer $\rightarrrow$ el address esta en el stack segment.
+- Si el address esta basado en el stack pointer $\rightarrow$ el address esta en el stack segment.
 
 - En cualquier otro caso $\rightarrrow$ el address esta en el heap segment.
 
