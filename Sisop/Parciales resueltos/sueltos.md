@@ -36,7 +36,7 @@ Entonces:
 
 - Para las referencias indirectas hay que calcular cuantas referencias entran en un bloque. Sabemos que los bloques son de 4KB y que cada referencia es de 8 bytes, por lo que (pasando todo a bytes) obtenemos qué: $\frac{4096}{8} = 512$ referencias. Cada una de estas referencias apunta a un bloque de 4Kb, por lo que se tienen $4\text{Kb} \times 512 = 2048 \text{Kb}$.
 
-- Para un bloque doble indirecto, se tendrá un bloque con referenicas a bloques indirectos, donde esos bloques tienen las referenicias al bloque de datos. Por lo calculado en el item anterior sabemos que un bloque indirecto tiene 512 referencias, y al estar en un bloque doble indirecto este tambien tendrá otras 512, por lo qué la cantidad total de referencias será de $512 \times 512 = 512^{2}$, donde se tiene $512^{2 \times 4 \text{kb}}$ debido a que cada bloque ocupa 4kb.
+- Para un bloque doble indirecto, se tendrá un bloque con referenicas a bloques indirectos, donde esos bloques tienen las referenicias al bloque de datos. Por lo calculado en el item anterior sabemos que un bloque indirecto tiene 512 referencias, y al estar en un bloque doble indirecto este tambien tendrá otras 512, por lo qué la cantidad total de referencias será de $512 \times 512 = 512^{2}$, donde se tiene $512^{2}\times 4 \text{kb}$ debido a que cada bloque ocupa 4kb.
 
 - Este misma idea aplica para los bloques triple y cuadruple indirectos, obteniendo que ambos tienen $512^{3}$ y $512^{4}$ referencias respectivamente.
 
