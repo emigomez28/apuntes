@@ -17,7 +17,7 @@ Entonces:
 ## Sea un disco que posee 512 bloques de 4kb y un sistema operativo cuyos inodos son de 256 bytes, definir un sistema de archivos FFS.
 
 - Como $1 \text{Kb} = 1024 \text{bytes}$, el tamaño de cada bloque es de $4 \times 1024 \text{bytes} = 4096\text{bytes}$.
-- Como es necesario guardar metadata, debe haber la misma cantidad de inodos que de bloques, por lo que la cantidad de inodos por bloque sabiendo que este ocupa $256 text{bytes}$ es de: $\frac{4096 \text{bytes}}{256 \text{bytes}} = 16$.
+- Como es necesario guardar metadata, debe haber la misma cantidad de inodos que de bloques, por lo que la cantidad de inodos por bloque sabiendo que este ocupa $256 \text{bytes}$ es de: $\frac{4096 \text{bytes}}{256 \text{bytes}} = 16$.
 - La cantidad de bloques de inodos debe ser de $\frac{512}{16} = 32$ ya que en cada bloque entran 16 inodos.
 - Teniendo todo esto en cuenta obtenemos qué el sistema de archivos queda definido como:
 
