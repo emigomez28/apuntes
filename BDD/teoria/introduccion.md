@@ -4,7 +4,7 @@
 
 - **Dato:** Un dato es un hecho que puede ser representado y almacenado de alguna forma, y que tiene un sentido implícito.
 
-## **Bases de datos tradicionales y no tradicionales
+## **Bases de datos tradicionales y no tradicionales**
 
 > Las bases de datos **tradicionales** almacenan datos de **texto o numéricos**, que pueden enunciarse a través de **proposiciones**.
 
@@ -14,7 +14,7 @@
 - Gabriela Sabatini  ganó el Abierto de Estados Unidos en 1990.
 - Roger Federer ganó el Abierto de Australia en 2018. 
 
-![NOTE]
+[!NOTE]
 > Se puede ver como la estructura es: 
 > *persona* ganó *torneo* en *año*
 > Un conjunto de proposiciones que tienen la misma estructura puede tipificarse a travès de un **predicado**.
@@ -26,7 +26,7 @@
 Entonces, si tuvieramos el predicado GanadorDelGrandSlam(persona, torneo, año) podríamos ver que proposiciones son verdaderas.
 
 
-![WARNING]
+[!WARNING]
 > Las bases de datos sólo almacenan proposiciones verdaderas, de lo contrario se tendrìan que guardar potencialmente infinitos datos.
 
 Actualmente las bases de datos también almacenan tipos de datos màs complejos como imágenes, audio, video o datos geoespaciales $\rightarrow$ **BDD no tradicionales**.
@@ -47,7 +47,7 @@ El **SGBD** provee un nivel de **abstracción** entre los programas o sistemas d
 > Arquitectura de 3 niveles de abstracción para la descripción/representación de los datos de una BDD.
 
 
-![Arquitectura de 3 capas]("img/arquitectura_3_capas.png")
+![Arquitectura de 3 capas](img/arquitectura_3_capas.png)
 
 - **Nivel Interno**: Como se organiza la información de forma fisica. Tipos de archivo, tamaños de bloque, etc. $\rightarrow$ Como perciben los datos el SO y el SGBD.
 
