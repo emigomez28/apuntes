@@ -14,14 +14,14 @@ Un modelo de datos debe incluir los siguientes elementos:
 
 - **Tipo de entidad:** Es un tipo o clase de objeto en particular. Ejemplo: Persona, Animal, País, etc.
 
-[!NOTE]
+>[!NOTE]
 > Una **entidad** es una **instancia** de un **tipo de entidad**. Ejemplo: Argentina (País)
 
 - **Atributo:** Es una propiedad que describe a la entidad. Ejemplo: País $\rightarrow$ Población.
 
 - **Tipos de interrelación:** Es la definición de un conjunto de relaciones o asociaciones similares entre dos o mas tipos de entidades. Ejemplo: Persona nació en Paìs.
 
-[!NOTE]
+>[!NOTE]
 > Una **interrelación** en concreto es: Messi nació en Argentina.
 
 ## Diagrama Entidad-Interrelacion
@@ -39,20 +39,20 @@ Mientras que las interrelaciones se diagraman:
 
 - Cada entidad tendrá **valores** particulares para cada uno de los atributos del tipo de dentidad al que corresponde.
 
-[!NOTE]
+>[!NOTE]
 > Ejemplo: País(nombre, población, superficie)
 > (Argentina, 40.117.096, 2.780.400 $\text{km}̣˄2$)
 
 - El **dominio** de un atributo es el conjunto de valores que el mismo puede tomar.
 
-[!NOTE]
+>[!NOTE]
 > El atributo **nombre** es una cadena de caracteres (string).
 > El atributo **población** es un número entero positivo.
 > El atributo **superficie** es un número real positivo.
 
 - En ciertos casos un atributo no tome ningun valor concreto, en estos casos el atributo toma **valor nulo** o **NULL**.
 
-[!NOTE]
+>[!NOTE]
 > En estos casos se puede dar por alguno de estos motivos:
 > 1. La entidad aún no posee ese atributo.
 > 2. El valor de ese atributo para es entidad se desconoce.
@@ -95,11 +95,11 @@ Mientras que las interrelaciones se diagraman:
 
 - Al ser distintos para cada entidad, los atributos clave permiten identificar unívocamente a las entidades.
 
-[!HINT]
+>[!TIP]
 > Dentro del diagrama Entidad-Interrelacion se los representa subrayados.
 
 
-[!WARNING]
+>[!WARNING]
 > El conjunto de atributos clave debe ser **minimal**, aún así, es posible que exista más de un conjunto de atributos clave para un tipo de entidad.
 > Para elegir un **atributo clave** se debe tener en cuenta la semántica de los datos (que representan) y no el estado actual de la BDD, por ejmeplo, podría tener una BDD donde no existen personas con mismo nombre, pero esto no significa que el atributo nombre sea un buen atributo clave.
 
@@ -123,5 +123,5 @@ Mientras que las interrelaciones se diagraman:
 
 - En los diagramas se utiliza **min** y **max** que denotan **participación** y **cardinalidad** respectivamente.
 
-![NOTE]
+>[!NOTE]
 > Las interrelaciones también pueden tener atributos.
