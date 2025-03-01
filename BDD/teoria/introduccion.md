@@ -14,7 +14,7 @@
 - Gabriela Sabatini  ganó el Abierto de Estados Unidos en 1990.
 - Roger Federer ganó el Abierto de Australia en 2018. 
 
-[!NOTE]
+> [!NOTE]
 > Se puede ver como la estructura es: 
 > *persona* ganó *torneo* en *año*
 > Un conjunto de proposiciones que tienen la misma estructura puede tipificarse a travès de un **predicado**.
@@ -26,7 +26,7 @@
 Entonces, si tuvieramos el predicado GanadorDelGrandSlam(persona, torneo, año) podríamos ver que proposiciones son verdaderas.
 
 
-[!WARNING]
+> [!WARNING]
 > Las bases de datos sólo almacenan proposiciones verdaderas, de lo contrario se tendrìan que guardar potencialmente infinitos datos.
 
 Actualmente las bases de datos también almacenan tipos de datos màs complejos como imágenes, audio, video o datos geoespaciales $\rightarrow$ **BDD no tradicionales**.
