@@ -41,7 +41,7 @@ Mientras que las interrelaciones se diagraman:
 
 >[!NOTE]
 > Ejemplo: País(nombre, población, superficie)
-> (Argentina, 40.117.096, 2.780.400 $\text{km}̣˄2$)
+> (Argentina, 40.117.096, 2.780.400 $\text{km}^2$)
 
 - El **dominio** de un atributo es el conjunto de valores que el mismo puede tomar.
 
@@ -64,7 +64,7 @@ Mientras que las interrelaciones se diagraman:
 ![Atributos Compuestos](img/atributos_compuestos.png)
 
 
-### Atributos multivaluados y monovaluados
+### Atributos multivaluados y monovaluados.
 
 > Un atributo es **multivaluado** cuando puede tener 2 o más valores para una misma entidad.
 
@@ -72,7 +72,7 @@ Mientras que las interrelaciones se diagraman:
 ![Atributos Multivaluados](img/atributos_multivaluados.png)
 
 
-### Atributos almacenados y derivados
+### Atributos almacenados y derivados.
 
 > Un atributo es **derivado** cuando se puede calcular a partir de otros atributos.
 
