@@ -1,4 +1,3 @@
-
 # La frontera de la red.
 
 - Los hosts se pueden dividir en 2 categorias $\rightarrow$ cliente y servidor. Donde el cliente suele ser una PC, un smartphone, etc y el server tiende a ser una maquina mas potente que almacena y distribuye paginas web, servicios de streaming de video, entre otros.
