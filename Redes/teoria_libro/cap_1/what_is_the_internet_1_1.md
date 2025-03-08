@@ -1,6 +1,4 @@
-# Computer Networks and the Internet.
-
-## ¿Que es el internet?
+# ¿Que es el internet?
 
 Hay varias formas de ver el Internet, desde un punto de vista practico (el autor lo llama 'Nuts and Bolts') teniendo en cuenta los componentes basicos tanto de hardware como de software.
 
@@ -135,10 +133,84 @@ A diferencia del WiFi el usuario necesita estar a unos pocos kilometros de la es
 
 ## El medio físico.
 
-- Cuando un bit pasa por varios routers y links, pasando así por varios pares transmisor-receptor. Por cada par, el bit propaga ondas electromagneticas o pulsos opticos a traves del **medio físico**.
+- Cuando un bit pasa por varios routers y links, pasando así por varios pares transmisor-receptor. Por cada par, el bit propaga ondas electromagneticas o pulsos opticos a traves de  un **medio físico**.
 
 
 El medio físico tiene 2 categorias: **guided media** y **unguided media**.
+
+
+| Guided Media|Unguided Media|
+| -------------------|--------|
+| Las ondas son guiadas a través del medio solido, como el cable de fibra optica o cable coaxial| Las ondas se propagan en la atmosfera y el espacio, como en Wireless LAN (WiFi) o un canal digital satelital |
+
+> [!NOTE]
+> El costo de un link físico (cable de cobre, cable de fibra optica, etc) suele ser menor comparado con otros costos de redes.
+
+### Twisted-Pair Copper Wire.
+
+- El medio mas barato y utilizado de transmisión guiada.
+
+> [!HINT]
+> Un ejemplo fácil de recordar es el teléfono de cable.
+
+- 2 conductores de cobre en paralelo.
+
+- Se usa también para internet residencial.
+
+### Coaxial Cable.
+
+- 2 conductores de cobre concentricos
+
+- Utilizado en sistemas de cableado de televisión.
+
+- Puede ser utilizado como un **medio guiado compartido**.
+
+
+### Fiber Optics.
+
+- La fibra óptica es un medio flexible y fino que conduce pulsos de luz, donde cada pulso representa un bit.
+
+- Son inmunes a la interferencia electromagnetica.
+
+### Terrestrial Radio Channels.
+
+- Los canales de radio llevan señales en el espectro electromagnetico.
+
+- NO requiren cable físico para ser instalados, pueden atravesar paredes y proveer conectividad a los usuarios mobile.
+
+- Dependen del medio de propagación, lo cual puede aumentar y/o disminuir la fuerza de la señal.
+
+Los canales de radio terrestres se pueden clasificar en 3:
+
+1. Aquellos que operan en distancias cortas $\rightarrow$ 1 o 2 metros.
+
+2. Aquellos que operan en areas locales $\rightarrow$ generalmente entre decenas y uno pocos cientos de metros.
+
+3. Aquellos que operan en un gran area $\rightarrow$ generalmente entre decenas de kilometros.
+
+## The Network Core.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
