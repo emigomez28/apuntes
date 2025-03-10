@@ -73,6 +73,42 @@ $$d_{\text{end to end}} = N \cdot \frac{L}{R}$$
 
 ## Una red de redes
 
+> El acceso a internet se logra a través de conectarse por un ISP, a su vez, los distintos ISP deben conectarse entre sí $\rightarrow$ red de redes.
 
 
+#### Estructura de red 1.
 
+- Interconecta a todos los ISP de acceso mediante un **único ISP global de tránsito**.
+
+- ISP global $\rightarrow$ red de routers y enlaces de comunicaciones. Muy costoso.
+
+
+#### Estructura de red 2.
+
+- Miles de ISP de acceso y multiples ISP globales de transito.
+
+- La empresas compiten por el servicio.
+
+- Jerarquía en 2 niveles donde los proveedores globales de tránsito residen en el nivel superior y los ISP de acceso en el inferior.
+
+#### Estructura de red 3
+
+- No solo hay multiples ISP competidores de nivel 1, sino que tambien puede haber múltiples ISP regionales compitiendo. Ejemplo: China tiene ISP de acceso en cada ciudad, que se conectan a ISP provinciales, y estos se conectan a ISP nacionales, finalmente estos se conectan a ISP de nivel 1.
+
+#### Estructura de red 4
+
+- Es similar a la Internet de hoy en día. Tiene **puntos de presencia** (PoP), **multidomiciliación** (multihoming), **conexiones entre pares** (peering) y puntos de intercambio Internet (IXP, Internet Exchange Point).
+
+- **PoP:** Grupo de uno o más routers de la red del proveedor, a través de los cuales los ISP clientes pueden conectarse al ISP proveedor.
+
+- **Multidomiciliación:** Conectarse a 2 o más ISP proveedores.
+
+- **Peering:** Como los ISP clientes pagan a un ISP proveer para el acceso de interconectividad a internet, 2 ISP proximos situados en un mismo nivel de jerarquía pueden conectar directamente sus redes, de modo que el tráfico que se intercambien pase por la conexión directa, en lugar de a través de intermediarios logrando reducir costos.
+
+- **Punto de Intercambio de Internet:** Punto de reunión en el que múltiples ISP pueden establecer conexiones entre pares. Punto de reunión en el que múltiples ISP pueden establecer conexiones entre pares. 
+
+#### Estructura de red 5
+
+- La internet de hoy en día.
+
+- Se construye sobre la red anterior, agregande **redes de proveedores de contenido**. Ejemplo: Google.
