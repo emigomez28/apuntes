@@ -2,7 +2,7 @@
 
 # Cargo
 
-> [!HINT]
+> [!NOTE]
 > El compilador se llama **rustc** y lo acompaña una familia de herramientas. El gestor de paquetes y conctructor del sistema es **cargo**.
 
 #### Comandos de cargo
@@ -28,7 +28,7 @@
 - Bools
 - char (Unicode) $\rightarrow$ No suele ser muy utilizado como sí lo es en C.
 
-> [!HINT]
+> [!NOTE]
 > **usize** e **isize** dependen de la lóngitud de la arquitectura en la que esta trabajando (64 o 32 bits).
 
 - Arrays: \[u8; 3\] Tamaño fijo (almacenado en el stack)
@@ -37,7 +37,7 @@
 
 ## Variables
 
->[WARNING]
+>[!WARNING]
 > Las variables son **INMUTABLES** por default. Las llamamos **bindings**.
 
 ``` rust
@@ -214,12 +214,12 @@ match punto {
 }
 ```
 
->[!HINT]
+>[!NOTE]
 > `println!()` es una macro ya que las funciones de rust son tipadas. De esta forma `println!()` puede recibir multiples argumentos de distinto tipo.
 
 ## If let
 
-> [!HINT] 
+> [!NOTE] 
 > Es como una variable del match que sirve para chequear una única rama.
 
 
@@ -252,7 +252,7 @@ loop {
 
 Permite iterar sobre un `iterador`.
 
-> [!HINT]
+> [!NOTE]
 > Muy similar al for de python.
 
 ```rust
@@ -349,7 +349,7 @@ impl std::default::Default for Persona {
 }
 ```
 
->[!HINT]
+>[!NOTE]
 > En este caso se puede hacer mas fácil así
 
 ```rust
@@ -391,7 +391,7 @@ mod saludos { // defino el módulo en el mismo archivo
   }
 }
 ```
-> [!HINT]
+> [!NOTE]
 > En este caso se usa la ruta completa, pero se pueden usar modificadores. `self` se refiere al mismo módulo y `super` al padre.
 
 ### Multiples archivos en mismo directorio.
