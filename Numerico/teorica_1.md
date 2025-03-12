@@ -51,8 +51,9 @@ $$\Delta z \leq |\frac{\delta z}{\delta x}|_{\hat{x}, \hat{y}, \cdots} \cdot \De
 > No es más que el polinomio de Taylor de grado 1 $\rightarrow$ Propagación lineal de errores.
 
 Entonces, la forma general es:
-
-$$\Delta z = \sum_{i = 0}^{\inf} |\frac{\delta f}{\delta x_{i}}|_{\hat{x}_i} \cdot \Delta x_{i}$$
+$$
+\Delta z = \sum_{i = 0}^{\infty} \left| \frac{\delta f}{\delta x_{i}} \right|_{\hat{x}_{i}} \cdot \Delta x_{i}
+$$
 
 > [!WARNING]
 > Siempre debe ocurrir qué $\Delta z \neq 0$.
