@@ -125,3 +125,42 @@ Mientras que las interrelaciones se diagraman:
 
 >[!NOTE]
 > Las interrelaciones también pueden tener atributos.
+
+### Interrelaciones
+
+- Las interrelaciones tambien pueden tener atributos.
+
+![Atributos Interrelacion](img/atributo_interrelacion.png)
+
+> [!NOTE]
+> Se le pone `aprobó` y no `cursó` porqué sirve para distinguir entre distintos vinculos.
+
+- Solo pueden formar parte de los atributos clave de una interrealación los atributos clave de los tipos de entidad que participan de la misma.
+
+> [!NOTE]
+> En general la elección de los atributos clave está fuertenemente condicionada por la cardinalidad.
+
+## Modelo ER Avanzado
+
+### Entidades fuertes y débiles
+
+A veces la identificación de una entidad depende de su interrelación con otra entidad.
+
+- Cuando un tipo de entidad depende de otro para ser identificado, se dice que es un **tipo de entidad débil**
+
+- La clave de una entidad débil se compone de la clave de su entidad identificadora, se llaman **discriminantes**.
+
+![Entidades fuertes y débiles](img/entidad_fuerte_debil.png)
+
+> [!NOTE]
+> Una entidad debil tiene participación total.
+
+
+### Interrelaciones n-arias.
+
+- Son aquellas en que participan 2 o más tipos de entidad distintos.
+
+
+
+
+
